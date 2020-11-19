@@ -2,8 +2,10 @@ const orderNumberField = document.querySelector('#orderNumberField');
 const answerField = document.querySelector('#answerField');
 let minValue = parseInt(prompt('Минимальное значение числа для игры','0'))||0;
 if (minValue < -999) minValue = -999;
+else if(minValue > 999) minValue = 999;
 let maxValue = parseInt(prompt('Максимальное значение числа для игры','100'))||100;
 if (maxValue > 999) maxValue = 999;
+else if(maxValue < -999) maxValue = -999;
 
 alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
 let answerNumber  = Math.floor((minValue + maxValue) / 2);
@@ -122,8 +124,10 @@ document.querySelector('#btnRetry').addEventListener('click', function () {
 	answerNumber = 0;
     minValue = parseInt(prompt('Минимальное значение числа для игры','0'))||0;
     if (minValue < -999) minValue = -999;
+    else if(minValue > 999) minValue = 999;
     maxValue = parseInt(prompt('Максимальное значение числа для игры','100'))||100;
     if (maxValue > 999) maxValue = 999;
+    else if(maxValue < -999) maxValue = -999;
 	alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
 	answerNumber  = Math.floor((minValue + maxValue) / 2);
 	orderNumberField.innerText = orderNumber;
@@ -157,7 +161,7 @@ document.querySelector('#btnOver').addEventListener('click', function () {
 document.querySelector('#btnEqual').addEventListener('click', function () {
     const phraseRandom = Math.round( Math.random()*2);
 	if (phraseRandom === 0)
-		answerField.innerText = winText()
+		answerField.innerText = winText();
 		else answerField.innerText = `Неверно!`;
 		gameRun = false;
 })
